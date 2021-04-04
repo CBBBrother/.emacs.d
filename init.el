@@ -38,7 +38,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(auto-complete ag which-key use-package try powerline dashboard)))
+   '(flycheck auto-complete ag which-key use-package try powerline dashboard)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -53,3 +53,22 @@
     (ac-config-default)
     (global-auto-complete-mode t)
     ))
+
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode t)
+  (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++17")))
+  )
+
+
+(use-package ggtags
+  :ensure t
+  :config
+  (add-hook 'c-mode-common-hook
+	    (lambda ()
+	      (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+		(ggtags-mode 1))))
+  )
+
+(set-frame-font "Liberation Mono for Powerline-14" nil t)
