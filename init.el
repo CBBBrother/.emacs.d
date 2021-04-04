@@ -1,4 +1,5 @@
 (setq inhibit-startup-screen t)
+(tool-bar-mode -1)
 
 (require 'package)
 (setq package-enable-at-startup nil)
@@ -19,8 +20,7 @@
   :config
   (which-key-mode))
 
-
-(tool-bar-mode -1)
+(defalias 'list-buffers 'ibuffer)
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq auto-save-default nil)
 
