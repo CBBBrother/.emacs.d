@@ -1,5 +1,12 @@
 (setq inhibit-startup-screen t)
+(setq frame-title-format nil)
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+(setq-default require-final-newline t)
+(setq global-display-line-numbers-mode t)
+
 (tool-bar-mode -1)
+(menu-bar-mode -1)
 
 (defalias 'list-buffers 'ibuffer)
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -26,6 +33,15 @@
   :ensure t
   :config
   (which-key-mode))
+
+(use-package auto-complete
+  :ensure t
+  :init
+  (progn
+    (ac-config-default)
+    (global-auto-complete-mode t)
+    ))
+
 
 (use-package projectile
   :ensure t)
@@ -66,7 +82,7 @@
 (use-package doom-themes
   :ensure t)
 
-(load-theme 'doom-monokai-classic t)
+(load-theme 'doom-gruvbox t)
 
 (use-package all-the-icons)
 
@@ -171,6 +187,8 @@
 
 (setq dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name)
 
+(set-frame-font "Liberation Mono for Powerline-18" nil t)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -178,7 +196,8 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    '("d74c5485d42ca4b7f3092e50db687600d0e16006d8fa335c69cf4f379dbd0eee" default))
- '(package-selected-packages '(all-the-icons counsel which-key try use-package)))
+ '(package-selected-packages
+   '(treemacs-projectile all-the-icons counsel which-key try use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
