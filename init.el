@@ -67,13 +67,9 @@
     (global-set-key (kbd "<f6>") 'ivy-resume)
     (global-set-key (kbd "M-x") 'counsel-M-x)
     (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-    (global-set-key (kbd "<f1> f") 'counsel-describe-function)
-    (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-    (global-set-key (kbd "<f1> l") 'counsel-load-library)
-    (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-    (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
     (global-set-key (kbd "C-c g") 'counsel-git)
     (global-set-key (kbd "C-c j") 'counsel-git-grep)
+    (global-set-key (kbd "C-c i") 'counsel-imenu)
     (global-set-key (kbd "C-c k") 'counsel-ag)
     (global-set-key (kbd "C-c f") 'counsel-fzf)
     (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
@@ -187,7 +183,8 @@
 
 (setq dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name)
 
-(set-frame-font "Liberation Mono for Powerline-18" nil t)
+;;(set-frame-font "Liberation Mono for Powerline-18" nil t)
+(set-frame-font "Iosevka Term Medium Oblique-18" nil t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
