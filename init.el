@@ -3,17 +3,21 @@
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 (setq-default require-final-newline t)
-(global-display-line-numbers-mode)
+(use-package display-line-numbers
+      :ensure nil
+      :hook (prog-mode . display-line-numbers-mode))
+
+(prefer-coding-system 'utf-8)
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
+(scroll-bar-mode -1)
 
 (defalias 'list-buffers 'ibuffer)
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq auto-save-default nil)
 
 (set-frame-font "Liberation Mono for Powerline-14" nil t)
-
 
 (require 'package)
 (setq package-enable-at-startup nil)
@@ -191,6 +195,12 @@
 
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+(bound-and-true-p ns-use-native-fullscreen)
+(setq ns-use-native-fullscreen nil)
+
+(setq frame-inhibit-implied-resize t
+      frame-resize-pixelwise t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
