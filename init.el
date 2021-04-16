@@ -202,6 +202,8 @@
 (setq frame-inhibit-implied-resize t
       frame-resize-pixelwise t)
 
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
