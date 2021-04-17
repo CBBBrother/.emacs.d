@@ -17,8 +17,6 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq auto-save-default nil)
 
-(set-frame-font "Liberation Mono for Powerline-14" nil t)
-
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
