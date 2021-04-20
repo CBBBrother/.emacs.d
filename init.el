@@ -17,8 +17,6 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq auto-save-default nil)
 
-(set-frame-font "Liberation Mono for Powerline-14" nil t)
-
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
@@ -109,7 +107,7 @@
           treemacs-missing-project-action  'remove
           treemacs-sorting                 'alphabetic-asc
           treemacs-follow-after-init       t
-          treemacs-width                   30)
+          treemacs-width                   50)
     :config
     (treemacs-follow-mode t)
     (treemacs-filewatch-mode t)
@@ -204,6 +202,10 @@
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
+(setq cursor-type 'bar)
+(setq cursor-in-non-selected-windows nil)
+(global-hl-line-mode)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -212,7 +214,7 @@
  '(custom-safe-themes
    '("d74c5485d42ca4b7f3092e50db687600d0e16006d8fa335c69cf4f379dbd0eee" default))
  '(package-selected-packages
-   '(org-bullets treemacs-projectile all-the-icons counsel which-key try use-package)))
+   '(magit org-bullets treemacs-projectile all-the-icons counsel which-key try use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
