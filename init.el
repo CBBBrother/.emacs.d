@@ -202,7 +202,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
-(setq cursor-type 'bar)
+(setq-default cursor-type 'bar)
 (setq cursor-in-non-selected-windows nil)
 (global-hl-line-mode)
 
