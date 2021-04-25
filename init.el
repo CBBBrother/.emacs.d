@@ -206,6 +206,15 @@
 (setq cursor-in-non-selected-windows nil)
 (global-hl-line-mode)
 
+(defconst my-cc-style
+  '("k&r"
+    (c-offsets-alist . ((innamespace . [0])))))
+
+(c-add-style "my-cc-style" my-cc-style)
+(setq c-default-style "my-cc-style")
+
+(global-set-key (kbd "C-c w") 'whitespace-mode)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
