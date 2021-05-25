@@ -17,6 +17,10 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq auto-save-default nil)
 
+(require 'powerline)
+(powerline-default-theme)
+
+
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
@@ -77,13 +81,14 @@
     (global-set-key (kbd "C-c i") 'counsel-imenu)
     (global-set-key (kbd "C-c k") 'counsel-ag)
     (global-set-key (kbd "C-c f") 'counsel-fzf)
+    (global-set-key (kbd "C-x b") 'counsel-switch-buffer)
     (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
     ))
 
-(use-package doom-themes
-  :ensure t)
+;; (use-package doom-themes
+;;  :ensure t)
 
-(load-theme 'doom-gruvbox t)
+;; (load-theme 'whiteboard t)
 
 (use-package all-the-icons)
 
@@ -189,7 +194,8 @@
 (setq dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name)
 
 ;;(set-frame-font "Liberation Mono for Powerline-18" nil t)
-(set-frame-font "Iosevka Term Medium Oblique-18" nil t)
+;; (set-frame-font "Iosevka Term Medium Oblique-20" nil t)
+(set-frame-font "Courier-18" nil t)
 
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
@@ -204,7 +210,7 @@
 
 (setq-default cursor-type 'bar)
 (setq cursor-in-non-selected-windows nil)
-(global-hl-line-mode)
+;; (global-hl-line-mode)
 
 (defconst my-cc-style
   '("k&r"
