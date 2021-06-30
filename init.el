@@ -2,6 +2,7 @@
 (setq frame-title-format nil)
 (setq make-backup-files nil)
 (setq auto-save-default nil)
+(setq visible-bell 1)
 (setq-default require-final-newline t)
 (use-package display-line-numbers
       :ensure nil
