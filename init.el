@@ -21,7 +21,6 @@
 (require 'powerline)
 (powerline-default-theme)
 
-
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
@@ -195,17 +194,10 @@
 (setq dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name)
 
 ;;(set-frame-font "Liberation Mono for Powerline-18" nil t)
-;; (set-frame-font "Iosevka Term Medium Oblique-20" nil t)
-(set-frame-font "Courier-18" nil t)
+(set-frame-font "Iosevka Term Medium Oblique-20" nil t)
 
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-
-(bound-and-true-p ns-use-native-fullscreen)
-(setq ns-use-native-fullscreen nil)
-
-(setq frame-inhibit-implied-resize t
-      frame-resize-pixelwise t)
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
@@ -221,7 +213,7 @@
 (setq c-default-style "my-cc-style")
 
 (global-set-key (kbd "C-c w") 'whitespace-mode)
-
+(toggle-frame-maximized)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
