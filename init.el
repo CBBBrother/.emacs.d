@@ -2,21 +2,33 @@
 (setq frame-title-format nil)
 (setq make-backup-files nil)
 (setq auto-save-default nil)
+
 (setq visible-bell 1)
+
 (setq-default require-final-newline t)
-(use-package display-line-numbers
-      :ensure nil
-      :hook (prog-mode . display-line-numbers-mode))
+
+(column-number-mode)
+(global-display-line-numbers-mode t)
+
+;; Disable line numbers for some modes
+(dolist (mode '(org-mode-hook
+                term-mode-hook
+                shell-mode-hook
+                treemacs-mode-hook
+                eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 (prefer-coding-system 'utf-8)
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
+(tooltip-mode -1)
 
-(defalias 'list-buffers 'ibuffer)
 (defalias 'yes-or-no-p 'y-or-n-p)
-(setq auto-save-default nil)
+
+;; Make ESC quit prompts
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 (require 'powerline)
 (powerline-default-theme)
