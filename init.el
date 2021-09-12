@@ -1,9 +1,20 @@
 (setq inhibit-startup-screen t)
+
+(toggle-frame-maximized)
+
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tooltip-mode -1)
+
 (setq frame-title-format nil)
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 
 (setq visible-bell 1)
+
+(setq-default cursor-type 'bar)
+(setq cursor-in-non-selected-windows nil)
 
 (setq-default require-final-newline t)
 
@@ -20,21 +31,15 @@
 
 (prefer-coding-system 'utf-8)
 
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(tooltip-mode -1)
-
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
-(require 'powerline)
-(powerline-default-theme)
+(global-set-key (kbd "C-c w") 'whitespace-mode)
 
 (require 'package)
-(setq package-enable-at-startup nil)
+(setq use-package-always-ensure t)
+
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
 
@@ -60,22 +65,8 @@
     (global-auto-complete-mode t)
     ))
 
-(setq-default c-basic-offset   4
-              tab-width        4
-              indent-tabs-mode nil)
-
-(use-package projectile
-  :ensure t)
-
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-
 (use-package counsel
   :ensure t)
-
-(use-package counsel-projectile
-  :ensure t
-  :config
-  (counsel-projectile-mode))
 
 (use-package swiper
   :ensure t
@@ -97,12 +88,53 @@
     (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
     ))
 
-;; (use-package doom-themes
-;;  :ensure t)
+(use-package dashboard
+  :ensure t
+ :bind
+  (("<f2>" . open-dashboard))
+  :init
+  (setq dashboard-center-content t
+	dashboard-set-heading-icons t
+	dashboard-set-file-icons t
+	dashboard-set-init-info t
+	dashboard-set-footer t
+	dashboard-set-navigator t
+       	dashboard-items '((recents  . 5)
+                          (bookmarks . 5)
+                          (registers . 5)))
+   (dashboard-setup-startup-hook)
+  :config
+  (defun dashboard-goto-recent-files ()
+      "Go to recent files."
+      (interactive)
+      (let ((func (local-key-binding "r")))
+        (and func (funcall func))))
+  
+  (defun open-dashboard ()
+      "Open the *dashboard* buffer and jump to the first widget."
+      (interactive)
+      ;; Check if need to recover layout
+      (if (> (length (window-list-1))
+             ;; exclude `treemacs' window
+             (if (and (fboundp 'treemacs-current-visibility)
+                      (eq (treemacs-current-visibility) 'visible))
+                 2
+               1))
+          (setq dashboard-recover-layout-p t))
 
-;; (load-theme 'whiteboard t)
+      (delete-other-windows)
 
-(use-package all-the-icons)
+      ;; Refresh dashboard buffer
+      (when (get-buffer dashboard-buffer-name)
+        (kill-buffer dashboard-buffer-name))
+      (dashboard-insert-startupify-lists)
+      (switch-to-buffer dashboard-buffer-name)
+
+      ;; Jump to the first section
+      (dashboard-goto-recent-files))
+  )
+
+(setq dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name)
 
 (use-package treemacs
     :commands (treemacs-follow-mode
@@ -155,67 +187,25 @@
       :functions treemacs-set-scope-type
       :config (treemacs-set-scope-type 'Perspectives)))
 
+(use-package all-the-icons)
 
-(use-package dashboard
-  :ensure t
- :bind
-  (("<f2>" . open-dashboard))
-  :init
-  (setq dashboard-center-content t
-	dashboard-set-heading-icons t
-	dashboard-set-file-icons t
-	dashboard-set-init-info t
-	dashboard-set-footer t
-	dashboard-set-navigator t
-       	dashboard-items '((recents  . 5)
-                          (bookmarks . 5)
-                          (projects . 5)
-                          (registers . 5)))
-   (dashboard-setup-startup-hook)
-  :config
-  (defun dashboard-goto-recent-files ()
-      "Go to recent files."
-      (interactive)
-      (let ((func (local-key-binding "r")))
-        (and func (funcall func))))
-  
-  (defun open-dashboard ()
-      "Open the *dashboard* buffer and jump to the first widget."
-      (interactive)
-      ;; Check if need to recover layout
-      (if (> (length (window-list-1))
-             ;; exclude `treemacs' window
-             (if (and (fboundp 'treemacs-current-visibility)
-                      (eq (treemacs-current-visibility) 'visible))
-                 2
-               1))
-          (setq dashboard-recover-layout-p t))
+(use-package doom-modeline
+  :init (doom-modeline-mode 1)
+  :custom ((doom-modeline-height 15)))
 
-      (delete-other-windows)
+(set-frame-font "Iosevka Term Medium Oblique-16" nil t)
 
-      ;; Refresh dashboard buffer
-      (when (get-buffer dashboard-buffer-name)
-        (kill-buffer dashboard-buffer-name))
-      (dashboard-insert-startupify-lists)
-      (switch-to-buffer dashboard-buffer-name)
+(use-package doom-themes
+  :init (load-theme 'doom-palenight t))
 
-      ;; Jump to the first section
-      (dashboard-goto-recent-files))
-  )
-
-(setq dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name)
-
-;;(set-frame-font "Liberation Mono for Powerline-18" nil t)
-(set-frame-font "Iosevka Term Medium Oblique-20" nil t)
-
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
-(setq-default cursor-type 'bar)
-(setq cursor-in-non-selected-windows nil)
-;; (global-hl-line-mode)
+(setq-default c-basic-offset   4
+              tab-width        4
+              indent-tabs-mode nil)
 
 (defconst my-cc-style
   '("k&r"
@@ -224,15 +214,16 @@
 (c-add-style "my-cc-style" my-cc-style)
 (setq c-default-style "my-cc-style")
 
-(global-set-key (kbd "C-c w") 'whitespace-mode)
-(toggle-frame-maximized)
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("d74c5485d42ca4b7f3092e50db687600d0e16006d8fa335c69cf4f379dbd0eee" default))
+   '("47db50ff66e35d3a440485357fb6acb767c100e135ccdf459060407f8baea7b2" "d74c5485d42ca4b7f3092e50db687600d0e16006d8fa335c69cf4f379dbd0eee" default))
  '(package-selected-packages
    '(magit org-bullets treemacs-projectile all-the-icons counsel which-key try use-package)))
 (custom-set-faces
