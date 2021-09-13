@@ -191,7 +191,10 @@
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
 
-(set-frame-font "Iosevka Term Medium Oblique-16" nil t)
+(if (eq system-type 'darwin)
+    (set-frame-font "Iosevka Term Medium Oblique-20" nil t)
+    (set-frame-font "Iosevka Term Medium Oblique-16" nil t)
+ )
 
 (use-package doom-themes
   :init (load-theme 'doom-palenight t))
