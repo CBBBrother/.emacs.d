@@ -11,7 +11,6 @@
 
 (setq visible-bell 1)
 
-(defalias 'list-buffers 'ibuffer)
 (setq-default cursor-type 'bar)
 (setq cursor-in-non-selected-windows nil)
 
@@ -30,6 +29,7 @@
 
 (prefer-coding-system 'utf-8)
 
+(defalias 'list-buffers 'ibuffer)
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Make ESC quit prompts
