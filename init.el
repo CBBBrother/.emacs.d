@@ -11,6 +11,7 @@
 
 (setq visible-bell 1)
 
+(defalias 'list-buffers 'ibuffer)
 (setq-default cursor-type 'bar)
 (setq cursor-in-non-selected-windows nil)
 
