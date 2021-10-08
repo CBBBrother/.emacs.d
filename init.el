@@ -11,10 +11,12 @@
 
 (setq visible-bell 1)
 
+(defalias 'list-buffers 'ibuffer)
 (setq-default cursor-type 'bar)
 (setq cursor-in-non-selected-windows nil)
 
 (setq-default require-final-newline t)
+(setq create-lockfiles nil)
 
 (column-number-mode)
 (global-display-line-numbers-mode t)
@@ -228,7 +230,7 @@
  '(custom-safe-themes
    '("47db50ff66e35d3a440485357fb6acb767c100e135ccdf459060407f8baea7b2" "d74c5485d42ca4b7f3092e50db687600d0e16006d8fa335c69cf4f379dbd0eee" default))
  '(package-selected-packages
-   '(magit org-bullets treemacs-projectile all-the-icons counsel which-key try use-package)))
+   '(treemacs-persp treemacs-magit magit org-bullets treemacs-projectile all-the-icons counsel which-key try use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
