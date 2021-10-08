@@ -31,6 +31,7 @@
 
 (prefer-coding-system 'utf-8)
 
+(defalias 'list-buffers 'ibuffer)
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Make ESC quit prompts
