@@ -38,6 +38,7 @@
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "C-c w") 'whitespace-mode)
+(setq whitespace-style (quote (face spaces tabs newline space-mark tab-mark newline-mark )))
 
 (require 'package)
 (setq use-package-always-ensure t)
@@ -232,8 +233,6 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    '("47db50ff66e35d3a440485357fb6acb767c100e135ccdf459060407f8baea7b2" "d74c5485d42ca4b7f3092e50db687600d0e16006d8fa335c69cf4f379dbd0eee" default))
- '(org-agenda-files '("~/syncthing/kirill/orgs/work.org"))
- '(org-hide-emphasis-markers nil)
  '(package-selected-packages
    '(treemacs-persp treemacs-magit magit org-bullets treemacs-projectile all-the-icons counsel which-key try use-package)))
 (custom-set-faces
