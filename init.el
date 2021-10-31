@@ -17,6 +17,7 @@
 
 (setq-default require-final-newline t)
 (setq create-lockfiles nil)
+(setq delete-trailing-lines t)
 
 (column-number-mode)
 (global-display-line-numbers-mode t)
@@ -54,6 +55,9 @@
 
 (use-package try
   :ensure t)
+
+(require 'evil)
+(evil-mode 1)
 
 (use-package which-key
   :ensure t
