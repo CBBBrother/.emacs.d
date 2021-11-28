@@ -59,6 +59,9 @@
 (require 'evil)
 (evil-mode 1)
 
+(evil-set-initial-state 'dired-mode 'emacs)
+(evil-set-initial-state 'treemacs-mode 'emacs)
+
 (use-package which-key
   :ensure t
   :config
@@ -194,6 +197,7 @@
       :functions treemacs-set-scope-type
       :config (treemacs-set-scope-type 'Perspectives)))
 
+;; M-x all-the-icons-install-fonts 
 (use-package all-the-icons)
 
 (use-package doom-modeline
