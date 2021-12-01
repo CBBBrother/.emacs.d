@@ -60,6 +60,7 @@
 (evil-mode 1)
 
 (evil-set-initial-state 'dired-mode 'emacs)
+(evil-set-initial-state 'org-mode 'emacs)
 (evil-set-initial-state 'treemacs-mode 'emacs)
 
 (use-package which-key
