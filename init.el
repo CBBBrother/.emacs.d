@@ -56,13 +56,6 @@
 (use-package try
   :ensure t)
 
-(require 'evil)
-(evil-mode 1)
-
-(evil-set-initial-state 'dired-mode 'emacs)
-(evil-set-initial-state 'org-mode 'emacs)
-(evil-set-initial-state 'treemacs-mode 'emacs)
-
 (use-package which-key
   :ensure t
   :config
@@ -201,17 +194,7 @@
 ;; M-x all-the-icons-install-fonts 
 (use-package all-the-icons)
 
-(use-package doom-modeline
-  :init (doom-modeline-mode 1)
-  :custom ((doom-modeline-height 15)))
-
-(if (eq system-type 'darwin)
-    (set-frame-font "Iosevka Term Medium Oblique-20" nil t)
-    (set-frame-font "Iosevka Term Medium Oblique-16" nil t)
- )
-
-(use-package doom-themes
-  :init (load-theme 'doom-palenight t))
+(set-frame-font "Iosevka Term Medium Oblique-16" nil t)
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -240,10 +223,47 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default bold shadow italic underline bold bold-italic bold])
+ '(ansi-color-names-vector
+   ["#fbf1c7" "#9d0006" "#79740e" "#b57614" "#076678" "#b16286" "#427b58" "#282828"])
  '(custom-safe-themes
-   '("47db50ff66e35d3a440485357fb6acb767c100e135ccdf459060407f8baea7b2" "d74c5485d42ca4b7f3092e50db687600d0e16006d8fa335c69cf4f379dbd0eee" default))
+   '("7eea50883f10e5c6ad6f81e153c640b3a288cd8dc1d26e4696f7d40f754cc703" "f149d9986497e8877e0bd1981d1bef8c8a6d35be7d82cba193ad7e46f0989f6a" "a9a67b318b7417adbedaab02f05fa679973e9718d9d26075c6235b1f0db703c8" "90a6f96a4665a6a56e36dec873a15cbedf761c51ec08dd993d6604e32dd45940" "d268b67e0935b9ebc427cad88ded41e875abfcc27abd409726a92e55459e0d01" "8146edab0de2007a99a2361041015331af706e7907de9d6a330a3493a541e5a6" "5784d048e5a985627520beb8a101561b502a191b52fa401139f4dd20acb07607" "613aedadd3b9e2554f39afe760708fc3285bf594f6447822dd29f947f0775d6c" "f91395598d4cb3e2ae6a2db8527ceb83fed79dbaf007f435de3e91e5bda485fb" "b0e446b48d03c5053af28908168262c3e5335dcad3317215d9fdeb8bac5bacf9" "a0be7a38e2de974d1598cf247f607d5c1841dbcef1ccd97cded8bea95a7c7639" "47db50ff66e35d3a440485357fb6acb767c100e135ccdf459060407f8baea7b2" "d74c5485d42ca4b7f3092e50db687600d0e16006d8fa335c69cf4f379dbd0eee" default))
+ '(exwm-floating-border-color "#d3c5a0")
+ '(fci-rule-color "#504945")
+ '(highlight-tail-colors ((("#eee4b4" "#f3f3c1") . 0) (("#e8e5bb" "#eff3cf") . 20)))
+ '(hl-sexp-background-color "#efebe9")
+ '(jdee-db-active-breakpoint-face-colors (cons "#f0f0f0" "#a89984"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#f0f0f0" "#79740e"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#f0f0f0" "#928374"))
+ '(objed-cursor-color "#9d0006")
  '(package-selected-packages
-   '(treemacs-persp treemacs-magit magit org-bullets treemacs-projectile all-the-icons counsel which-key try use-package)))
+   '(treemacs-persp treemacs-magit magit org-bullets treemacs-projectile all-the-icons counsel which-key try use-package))
+ '(pdf-view-midnight-colors (cons "#282828" "#fbf1c7"))
+ '(rustic-ansi-faces
+   ["#fbf1c7" "#9d0006" "#79740e" "#b57614" "#076678" "#b16286" "#427b58" "#282828"])
+ '(vc-annotate-background "#fbf1c7")
+ '(vc-annotate-color-map
+   (list
+    (cons 20 "#79740e")
+    (cons 40 "#8d7410")
+    (cons 60 "#a17512")
+    (cons 80 "#b57614")
+    (cons 100 "#b3620e")
+    (cons 120 "#b14e08")
+    (cons 140 "#af3a03")
+    (cons 160 "#af472e")
+    (cons 180 "#b0545a")
+    (cons 200 "#b16286")
+    (cons 220 "#aa415b")
+    (cons 240 "#a32030")
+    (cons 260 "#9d0006")
+    (cons 280 "#9a2021")
+    (cons 300 "#97413c")
+    (cons 320 "#946258")
+    (cons 340 "#504945")
+    (cons 360 "#504945")))
+ '(vc-annotate-very-old-color nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
