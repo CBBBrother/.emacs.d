@@ -4,6 +4,7 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tooltip-mode -1)
+(xterm-mouse-mode 1)
 
 (setq frame-title-format nil)
 (setq make-backup-files nil)
