@@ -14,11 +14,13 @@
 
 (defalias 'list-buffers 'ibuffer)
 (setq-default cursor-type 'bar)
+(global-hl-line-mode 1)
 (setq cursor-in-non-selected-windows nil)
 
 (setq-default require-final-newline t)
 (setq create-lockfiles nil)
 (setq delete-trailing-lines t)
+(setq org-hide-emphasis-markers t)
 
 (column-number-mode)
 (global-display-line-numbers-mode t)
@@ -81,11 +83,10 @@
     (setq ivy-use-virtual-buffers t)
     (global-set-key "\C-s" 'swiper)
     (global-set-key (kbd "C-c C-r") 'ivy-resume)
-    (global-set-key (kbd "<f6>") 'ivy-resume)
     (global-set-key (kbd "M-x") 'counsel-M-x)
     (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-    (global-set-key (kbd "C-c g") 'counsel-git)
     (global-set-key (kbd "C-c j") 'counsel-git-grep)
+    (global-set-key (kbd "C-c g") 'counsel-git)
     (global-set-key (kbd "C-c i") 'counsel-imenu)
     (global-set-key (kbd "C-c k") 'counsel-ag)
     (global-set-key (kbd "C-c f") 'counsel-fzf)
@@ -95,51 +96,8 @@
 
 (use-package dashboard
   :ensure t
- :bind
-  (("<f2>" . open-dashboard))
-  :init
-  (setq dashboard-center-content t
-	dashboard-set-heading-icons t
-	dashboard-set-file-icons t
-	dashboard-set-init-info t
-	dashboard-set-footer t
-	dashboard-set-navigator t
-       	dashboard-items '((recents  . 5)
-                          (bookmarks . 5)
-                          (registers . 5)))
-   (dashboard-setup-startup-hook)
   :config
-  (defun dashboard-goto-recent-files ()
-      "Go to recent files."
-      (interactive)
-      (let ((func (local-key-binding "r")))
-        (and func (funcall func))))
-  
-  (defun open-dashboard ()
-      "Open the *dashboard* buffer and jump to the first widget."
-      (interactive)
-      ;; Check if need to recover layout
-      (if (> (length (window-list-1))
-             ;; exclude `treemacs' window
-             (if (and (fboundp 'treemacs-current-visibility)
-                      (eq (treemacs-current-visibility) 'visible))
-                 2
-               1))
-          (setq dashboard-recover-layout-p t))
-
-      (delete-other-windows)
-
-      ;; Refresh dashboard buffer
-      (when (get-buffer dashboard-buffer-name)
-        (kill-buffer dashboard-buffer-name))
-      (dashboard-insert-startupify-lists)
-      (switch-to-buffer dashboard-buffer-name)
-
-      ;; Jump to the first section
-      (dashboard-goto-recent-files))
-  )
-
-(setq dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name)
+  (dashboard-setup-startup-hook))
 
 (use-package treemacs
     :commands (treemacs-follow-mode
@@ -198,23 +156,6 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
-
-(setq-default c-basic-offset   4
-              tab-width        4
-              indent-tabs-mode nil)
-
-(defconst my-cc-style
-  '("k&r"
-    (c-offsets-alist . ((innamespace . [0])))))
-
-(c-add-style "my-cc-style" my-cc-style)
-(setq c-default-style "my-cc-style")
-
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-(setq org-hide-emphasis-markers t)
-
 (toggle-frame-maximized)
 
 (custom-set-variables
@@ -228,7 +169,7 @@
    ["#fbf1c7" "#9d0006" "#79740e" "#b57614" "#076678" "#b16286" "#427b58" "#282828"])
  '(column-number-mode t)
  '(custom-safe-themes
-   '("7eea50883f10e5c6ad6f81e153c640b3a288cd8dc1d26e4696f7d40f754cc703" "f149d9986497e8877e0bd1981d1bef8c8a6d35be7d82cba193ad7e46f0989f6a" "a9a67b318b7417adbedaab02f05fa679973e9718d9d26075c6235b1f0db703c8" "90a6f96a4665a6a56e36dec873a15cbedf761c51ec08dd993d6604e32dd45940" "d268b67e0935b9ebc427cad88ded41e875abfcc27abd409726a92e55459e0d01" "8146edab0de2007a99a2361041015331af706e7907de9d6a330a3493a541e5a6" "5784d048e5a985627520beb8a101561b502a191b52fa401139f4dd20acb07607" "613aedadd3b9e2554f39afe760708fc3285bf594f6447822dd29f947f0775d6c" "f91395598d4cb3e2ae6a2db8527ceb83fed79dbaf007f435de3e91e5bda485fb" "b0e446b48d03c5053af28908168262c3e5335dcad3317215d9fdeb8bac5bacf9" "a0be7a38e2de974d1598cf247f607d5c1841dbcef1ccd97cded8bea95a7c7639" "47db50ff66e35d3a440485357fb6acb767c100e135ccdf459060407f8baea7b2" "d74c5485d42ca4b7f3092e50db687600d0e16006d8fa335c69cf4f379dbd0eee" default))
+   '("1436985fac77baf06193993d88fa7d6b358ad7d600c1e52d12e64a2f07f07176" default))
  '(exwm-floating-border-color "#d3c5a0")
  '(fci-rule-color "#504945")
  '(global-display-line-numbers-mode t)
@@ -240,7 +181,7 @@
  '(menu-bar-mode nil)
  '(objed-cursor-color "#9d0006")
  '(package-selected-packages
-   '(treemacs-persp treemacs-magit magit org-bullets treemacs-projectile all-the-icons counsel which-key try use-package))
+   '(dashboard lsp-mode dracula-theme treemacs-persp treemacs-magit magit org-bullets treemacs-projectile all-the-icons counsel which-key try use-package))
  '(pdf-view-midnight-colors (cons "#282828" "#fbf1c7"))
  '(rustic-ansi-faces
    ["#fbf1c7" "#9d0006" "#79740e" "#b57614" "#076678" "#b16286" "#427b58" "#282828"])
