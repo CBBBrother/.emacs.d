@@ -14,7 +14,6 @@
 
 (defalias 'list-buffers 'ibuffer)
 (setq-default cursor-type 'bar)
-(global-hl-line-mode 1)
 (setq cursor-in-non-selected-windows nil)
 
 (setq-default require-final-newline t)
@@ -64,13 +63,18 @@
   :config
   (which-key-mode))
 
-(use-package auto-complete
+;; (use-package auto-complete
+;;   :ensure t
+;;   :init
+;;   (progn
+;;     (ac-config-default)
+;;     (global-auto-complete-mode t)
+;;     ))
+
+(use-package company
   :ensure t
   :init
-  (progn
-    (ac-config-default)
-    (global-auto-complete-mode t)
-    ))
+  (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package counsel
   :ensure t)
@@ -153,6 +157,35 @@
 
 (toggle-frame-maximized)
 
+(use-package go-mode)
+
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+(setq-default c-basic-offset   4
+              tab-width        4
+              indent-tabs-mode nil)
+(defconst my-cc-style
+  '("k&r"
+    (c-offsets-alist . ((innamespace . [0])))))
+(c-add-style "my-cc-style" my-cc-style)
+(setq c-default-style "my-cc-style")
+
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+(use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :hook (
+	 (c++-mode . lsp-deferred)
+	 (go-mode . lsp-deferred)
+	 (python-mode . lsp-deferred)
+	 (lsp-mode . lsp-enable-which-key-integration))
+  :commands (lsp lsp-deferred))
+
+(use-package lsp-ui :commands lsp-ui-mode)
+(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -174,7 +207,7 @@
  '(menu-bar-mode nil)
  '(objed-cursor-color "#9d0006")
  '(package-selected-packages
-   '(dashboard lsp-mode dracula-theme treemacs-persp treemacs-magit magit org-bullets treemacs-projectile all-the-icons counsel which-key try use-package))
+   '(flycheck go-mode dashboard dracula-theme treemacs-persp treemacs-magit magit org-bullets treemacs-projectile all-the-icons counsel which-key try use-package))
  '(pdf-view-midnight-colors (cons "#282828" "#fbf1c7"))
  '(rustic-ansi-faces
    ["#fbf1c7" "#9d0006" "#79740e" "#b57614" "#076678" "#b16286" "#427b58" "#282828"])
@@ -207,3 +240,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Iosevka Term" :foundry "UKWN" :slant oblique :weight normal :height 151 :width normal)))))
+(put 'upcase-region 'disabled nil)
