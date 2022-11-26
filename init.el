@@ -42,7 +42,7 @@
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "C-c w") 'whitespace-mode)
-(setq whitespace-style (quote (face spaces tabs newline space-mark tab-mark newline-mark )))
+(setq whitespace-style (quote (face spaces tabs newline space-mark tab-mark newline-mark)))
 
 (require 'package)
 (setq use-package-always-ensure t)
@@ -106,12 +106,7 @@
                treemacs-git-mode)
     :bind (([f8]        . treemacs)
            ("M-0"       . treemacs-select-window)
-           ("C-x 1"     . treemacs-delete-other-windows)
-           ("C-x t 1"   . treemacs-delete-other-windows)
            ("C-x t t"   . treemacs)
-           ("C-x t b"   . treemacs-bookmark)
-           ("C-x t C-t" . treemacs-find-file)
-           ("C-x t M-t" . treemacs-find-tag)
            :map treemacs-mode-map
            ([mouse-1]   . treemacs-single-click-expand-action))
     :config
@@ -168,8 +163,6 @@
  '(ansi-color-names-vector
    ["#fbf1c7" "#9d0006" "#79740e" "#b57614" "#076678" "#b16286" "#427b58" "#282828"])
  '(column-number-mode t)
- '(custom-safe-themes
-   '("1436985fac77baf06193993d88fa7d6b358ad7d600c1e52d12e64a2f07f07176" default))
  '(exwm-floating-border-color "#d3c5a0")
  '(fci-rule-color "#504945")
  '(global-display-line-numbers-mode t)
