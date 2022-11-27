@@ -113,7 +113,7 @@
            :map treemacs-mode-map
            ([mouse-1]   . treemacs-single-click-expand-action))
     :config
-    (setq treemacs-collapse-dirs           (if treemacs-python-executable 3 0)
+    (setq treemacs-collaspse-dirs           (if treemacs-python-executable 3 0)
           treemacs-missing-project-action  'remove
           treemacs-sorting                 'alphabetic-asc
           treemacs-follow-after-init       t
@@ -126,27 +126,8 @@
       (`(t . t)
        (treemacs-git-mode 'deferred))
       (`(t . _)
-       (treemacs-git-mode 'simple)))
+       (treemacs-git-mode 'simple))))
 
-    (use-package treemacs-projectile
-      :after projectile
-      :bind (:map projectile-command-map
-             ("h" . treemacs-projectile)))
-
-    (use-package treemacs-magit
-      :after magit
-      :commands treemacs-magit--schedule-update
-      :hook ((magit-post-commit
-              git-commit-post-finish
-              magit-post-stage
-              magit-post-unstage)
-             . treemacs-magit--schedule-update))
-
-    (use-package treemacs-persp
-      :after persp-mode
-      :demand t
-      :functions treemacs-set-scope-type
-      :config (treemacs-set-scope-type 'Perspectives)))
 
 ;; M-x all-the-icons-install-fonts 
 (use-package all-the-icons)
