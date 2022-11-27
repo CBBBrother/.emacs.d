@@ -58,18 +58,17 @@
 (use-package try
   :ensure t)
 
+(use-package monokai-theme
+  :ensure t)
+(load-theme 'monokai t)
+
+(add-to-list 'default-frame-alist
+             '(font . "MesloLGL Nerd Font Mono-16"))
+
 (use-package which-key
   :ensure t
   :config
   (which-key-mode))
-
-;; (use-package auto-complete
-;;   :ensure t
-;;   :init
-;;   (progn
-;;     (ac-config-default)
-;;     (global-auto-complete-mode t)
-;;     ))
 
 (use-package company
   :ensure t
@@ -186,6 +185,9 @@
 (use-package lsp-ui :commands lsp-ui-mode)
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
 
+(setenv "PATH" (concat (getenv "PATH") ":/opt/homebrew/bin"))
+(setq exec-path (append exec-path '("/opt/homebrew/bin")))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -207,7 +209,7 @@
  '(menu-bar-mode nil)
  '(objed-cursor-color "#9d0006")
  '(package-selected-packages
-   '(flycheck go-mode dashboard dracula-theme treemacs-persp treemacs-magit magit org-bullets treemacs-projectile all-the-icons counsel which-key try use-package))
+   '(yasnippet flycheck go-mode dashboard dracula-theme treemacs-persp treemacs-magit magit org-bullets treemacs-projectile all-the-icons counsel which-key try use-package))
  '(pdf-view-midnight-colors (cons "#282828" "#fbf1c7"))
  '(rustic-ansi-faces
    ["#fbf1c7" "#9d0006" "#79740e" "#b57614" "#076678" "#b16286" "#427b58" "#282828"])
@@ -239,5 +241,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Iosevka Term" :foundry "UKWN" :slant oblique :weight normal :height 151 :width normal)))))
+ '(default ((t (:family "MesloLGL Nerd Font Mono" :foundry "nil" :slant normal :weight normal :height 120 :width normal)))))
 (put 'upcase-region 'disabled nil)
