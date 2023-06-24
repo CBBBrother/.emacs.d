@@ -1,3 +1,6 @@
+;;; package --- Summary
+;;; Commentary:
+;;; Code:
 (use-package try
   :ensure t)
 
@@ -49,7 +52,7 @@
            :map treemacs-mode-map
            ([mouse-1]   . treemacs-single-click-expand-action))
     :config
-    (setq treemacs-collaspse-dirs           (if treemacs-python-executable 3 0)
+    (setq treemacs-collapse-dirs           (if treemacs-python-executable 3 0)
           treemacs-missing-project-action  'remove
           treemacs-sorting                 'alphabetic-asc
           treemacs-follow-after-init       t
@@ -64,7 +67,7 @@
       (`(t . _)
        (treemacs-git-mode 'simple))))
 
-;; M-x all-the-icons-install-fonts 
+;; M-x all-the-icons-install-fonts
 (use-package all-the-icons)
 
 (use-package rainbow-delimiters
@@ -90,3 +93,4 @@
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
 
 (provide 'packages)
+;;; packages.el ends here

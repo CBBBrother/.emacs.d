@@ -1,3 +1,6 @@
+;;; package --- Summary
+;;; Commentary:
+;;; Code:
 (setq inhibit-startup-screen t)
 
 (tool-bar-mode -1)
@@ -16,3 +19,4 @@
 (setq visible-bell 1)
 
 (provide 'ui)
+;;; ui.el ends here

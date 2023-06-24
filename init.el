@@ -32,10 +32,6 @@
 (global-set-key (kbd "C-c w") 'whitespace-mode)
 (setq whitespace-style (quote (face spaces tabs newline space-mark tab-mark newline-mark)))
 
-(use-package monokai-theme
-  :ensure t)
-(load-theme 'monokai t)
-
 (add-to-list 'default-frame-alist
              '(font . "MesloLGL Nerd Font Mono-16"))
 

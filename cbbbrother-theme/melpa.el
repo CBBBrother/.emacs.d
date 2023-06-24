@@ -1,3 +1,6 @@
+;;; package --- Summary
+;;; Commentary:
+;;; Code:
 (require 'package)
 (setq use-package-always-ensure t)
 
@@ -11,3 +14,4 @@
   (package-install 'use-package))
 
 (provide 'melpa)
+;;; melpa.el ends here
