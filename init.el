@@ -37,15 +37,9 @@
 
 (toggle-frame-maximized)
 
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (setq-default c-basic-offset   4
               tab-width        4
               indent-tabs-mode nil)
-(defconst my-cc-style
-  '("k&r"
-    (c-offsets-alist . ((innamespace . [0])))))
-(c-add-style "my-cc-style" my-cc-style)
-(setq c-default-style "my-cc-style")
 
 (setenv "PATH" (concat (getenv "PATH") ":/opt/homebrew/bin"))
 (setq exec-path (append exec-path '("/opt/homebrew/bin")))
@@ -71,7 +65,7 @@
  '(menu-bar-mode nil)
  '(objed-cursor-color "#9d0006")
  '(package-selected-packages
-   '(yasnippet flycheck go-mode dashboard dracula-theme treemacs-persp treemacs-magit magit org-bullets treemacs-projectile all-the-icons counsel which-key try use-package))
+   '(yasnippet treemacs-persp treemacs-magit magit org-bullets treemacs-projectile all-the-icons counsel which-key try use-package))
  '(pdf-view-midnight-colors (cons "#282828" "#fbf1c7"))
  '(rustic-ansi-faces
    ["#fbf1c7" "#9d0006" "#79740e" "#b57614" "#076678" "#b16286" "#427b58" "#282828"])
