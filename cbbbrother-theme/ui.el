@@ -8,6 +8,9 @@
 (scroll-bar-mode -1)
 (tooltip-mode -1)
 
+(setq-default fill-column 140)
+(setq-default truncate-lines t)
+
 (setq frame-title-format nil)
 
 (column-number-mode)

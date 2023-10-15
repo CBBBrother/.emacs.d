@@ -51,7 +51,7 @@
           treemacs-missing-project-action  'remove
           treemacs-sorting                 'alphabetic-asc
           treemacs-follow-after-init       t
-          treemacs-width                   50)
+          treemacs-width                   40)
     :config
     (treemacs-follow-mode t)
     (treemacs-filewatch-mode t)

@@ -2,6 +2,7 @@
 (require 'ui)
 (require 'melpa)
 (require 'packages)
+(require 'org-mode-theme)
 
 (setq make-backup-files nil)
 (setq auto-save-default nil)
@@ -52,7 +53,7 @@
  '(ansi-color-faces-vector
    [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
-   ["#fbf1c7" "#9d0006" "#79740e" "#b57614" "#076678" "#b16286" "#427b58" "#282828"])
+   ["#eee8d5" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#839496"])
  '(column-number-mode t)
  '(exwm-floating-border-color "#d3c5a0")
  '(fci-rule-color "#504945")
