@@ -36,11 +36,6 @@
     (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
     ))
 
-(use-package dashboard
-  :ensure t
-  :config
-  (dashboard-setup-startup-hook))
-
 (use-package treemacs
     :commands (treemacs-follow-mode
                treemacs-filewatch-mode
@@ -69,28 +64,6 @@
 
 ;; M-x all-the-icons-install-fonts
 (use-package all-the-icons)
-
-(use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode))
-
-(use-package go-mode)
-
-(use-package flycheck
-  :ensure t
-  :init (global-flycheck-mode))
-
-(use-package lsp-mode
-  :init
-  (setq lsp-keymap-prefix "C-c l")
-  :hook (
-	 (c++-mode . lsp-deferred)
-	 (go-mode . lsp-deferred)
-	 (python-mode . lsp-deferred)
-	 (lsp-mode . lsp-enable-which-key-integration))
-  :commands (lsp lsp-deferred))
-
-(use-package lsp-ui :commands lsp-ui-mode)
-(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
 
 (provide 'packages)
 ;;; packages.el ends here
