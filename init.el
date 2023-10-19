@@ -45,6 +45,15 @@
 (setenv "PATH" (concat (getenv "PATH") ":/opt/homebrew/bin"))
 (setq exec-path (append exec-path '("/opt/homebrew/bin")))
 
+(defun my:search-in-google ()
+  (interactive)
+  (browse-url
+   (concat "http://google.com/search?q="
+	   (url-hexify-string
+	    (if mark-active
+		(buffer-substring (region-beginning) (region-end))
+        (read-string "Google: "))))))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

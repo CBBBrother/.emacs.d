@@ -65,5 +65,9 @@
 ;; M-x all-the-icons-install-fonts
 (use-package all-the-icons)
 
+(require 'powerline)
+(powerline-default-theme)
+(powerline-reset)
+
 (provide 'packages)
 ;;; packages.el ends here
