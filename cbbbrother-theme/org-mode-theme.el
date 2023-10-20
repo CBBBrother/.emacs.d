@@ -22,6 +22,7 @@
    '(org-level-5 ((t (:inherit outline-5 :height 1.0))))))
 
 (add-hook 'org-mode-hook #'my:org-mode-hook)
+(add-hook 'org-mode-hook 'org-indent-mode)
 
 (provide 'org-mode-theme)
 ;;; org-mode-theme.el ends here
