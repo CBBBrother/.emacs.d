@@ -1,6 +1,11 @@
 ;;; package --- Summary
 ;;; Commentary:
 ;;; Code:
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook))
+
 (use-package try
   :ensure t)
 
