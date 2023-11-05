@@ -7,6 +7,8 @@
 
 (setq make-backup-files nil)
 (setq auto-save-default nil)
+(global-auto-revert-mode 1)
+(setq global-auto-revert-non-file-buffers t)
 
 (defalias 'list-buffers 'ibuffer)
 
@@ -44,7 +46,9 @@
               indent-tabs-mode nil)
 
 (setenv "PATH" (concat (getenv "PATH") ":/opt/homebrew/bin"))
+(setenv "PATH" (concat (getenv "PATH") ":~/go/bin"))
 (setq exec-path (append exec-path '("/opt/homebrew/bin")))
+(setq exec-path (append exec-path '("~/go/bin")))
 
 (defun my:search-in-google ()
   (interactive)
@@ -74,6 +78,7 @@
  '(jdee-db-requested-breakpoint-face-colors (cons "#f0f0f0" "#79740e"))
  '(jdee-db-spec-breakpoint-face-colors (cons "#f0f0f0" "#928374"))
  '(objed-cursor-color "#9d0006")
+ '(org-agenda-files nil)
  '(package-selected-packages
    '(tree-sitter-langs tree-sitter consult yasnippet treemacs-persp treemacs-magit magit org-bullets treemacs-projectile all-the-icons counsel which-key try use-package))
  '(pdf-view-midnight-colors (cons "#282828" "#fbf1c7"))
