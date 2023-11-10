@@ -50,14 +50,14 @@
 (setq exec-path (append exec-path '("/opt/homebrew/bin")))
 (setq exec-path (append exec-path '("~/go/bin")))
 
-(defun my:search-in-google ()
+(defun cbbb:search-in-google ()
   (interactive)
   (browse-url
    (concat "http://google.com/search?q="
 	   (url-hexify-string
 	    (if mark-active
 		(buffer-substring (region-beginning) (region-end))
-        (read-string "Google: "))))))
+              (read-string "Google: "))))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -80,7 +80,7 @@
  '(objed-cursor-color "#9d0006")
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(tree-sitter-langs tree-sitter consult yasnippet treemacs-persp treemacs-magit magit org-bullets treemacs-projectile all-the-icons counsel which-key try use-package))
+   '(gnu-elpa-keyring-update lsp-ui lsp-mode flycheck org-bullets which-key vertico try treemacs powerline marginalia dashboard consult company all-the-icons))
  '(pdf-view-midnight-colors (cons "#282828" "#fbf1c7"))
  '(rustic-ansi-faces
    ["#fbf1c7" "#9d0006" "#79740e" "#b57614" "#076678" "#b16286" "#427b58" "#282828"])
