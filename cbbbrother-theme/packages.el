@@ -257,9 +257,14 @@
 ;; M-x all-the-icons-install-fonts
 (use-package all-the-icons)
 
-(require 'powerline)
-(powerline-default-theme)
-(powerline-reset)
+(use-package powerline
+  :ensure t
+  :commands (powerline-default-theme
+             powerline-reset))
+
+(use-package yaml-mode
+  :ensure t)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 
 (provide 'packages)
 ;;; packages.el ends here

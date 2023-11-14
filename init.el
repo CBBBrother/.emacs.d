@@ -37,7 +37,7 @@
 (setq whitespace-style (quote (face spaces tabs newline space-mark tab-mark newline-mark)))
 
 (add-to-list 'default-frame-alist
-             '(font . "MesloLGL Nerd Font Mono-16"))
+             '(font . "Iosevka Nerd Font Mono-18"))
 
 (toggle-frame-maximized)
 
@@ -111,7 +111,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "MesloLGL Nerd Font Mono" :foundry "nil" :slant normal :weight normal :height 120 :width normal))))
  '(org-level-1 ((t (:inherit outline-1 :height 1.5))))
  '(org-level-2 ((t (:inherit outline-2 :height 1.3))))
  '(org-level-3 ((t (:inherit outline-3 :height 1.1))))

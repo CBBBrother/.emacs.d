@@ -16,8 +16,9 @@
 (column-number-mode)
 (global-display-line-numbers-mode t)
 (delete-selection-mode 1)
+(hl-line-mode)
 
-(setq-default cursor-type 'bar)
+(setq-default cursor-type 'hollow)
 (setq cursor-in-non-selected-windows nil)
 (setq visible-bell 1)
 
