@@ -1,10 +1,25 @@
 ;;; package --- Summary
 ;;; Commentary:
 ;;; Code:
+(use-package projectile
+  :ensure t
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :config
+  (projectile-mode)
+  (projectile-register-project-type 'ymake '("ya.make")
+        :project-file "ya.make"
+        :compile "ya make"
+        :run "ya make -t"))
+
 (use-package dashboard
   :ensure t
   :config
   (dashboard-setup-startup-hook))
+
+(setq dashboard-items '((recents  . 5)
+                        (bookmarks . 5)
+                        (registers . 5)))
 
 (use-package try
   :ensure t)
@@ -18,7 +33,6 @@
   :ensure t
   :init
   (add-hook 'after-init-hook 'global-company-mode))
-
 
 (use-package consult
   ;; Replace bindings. Lazily loaded due by `use-package'.
@@ -138,6 +152,9 @@
   ;;;; 5. No project support
   ;; (setq consult-project-function nil)
   )
+
+(use-package consult-projectile
+  :ensure t)
 
 (use-package vertico
   :init
