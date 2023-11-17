@@ -37,7 +37,7 @@
 (setq whitespace-style (quote (face spaces tabs newline space-mark tab-mark newline-mark)))
 
 (add-to-list 'default-frame-alist
-             '(font . "Iosevka Nerd Font Mono-18"))
+             '(font . "Iosevka Nerd Font Mono-19"))
 
 (toggle-frame-maximized)
 

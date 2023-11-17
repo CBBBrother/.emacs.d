@@ -16,11 +16,12 @@
 (column-number-mode)
 (global-display-line-numbers-mode t)
 (delete-selection-mode 1)
-(global-hl-line-mode t)
 
-(setq-default cursor-type 'hollow)
+(setq-default cursor-type '(hbar . 2))
 (setq cursor-in-non-selected-windows nil)
 (setq visible-bell 1)
+
+(load-theme 'tango)
 
 (provide 'ui)
 ;;; ui.el ends here
