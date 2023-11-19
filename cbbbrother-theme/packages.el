@@ -15,7 +15,9 @@
 (use-package dashboard
   :ensure t
   :config
-  (dashboard-setup-startup-hook))
+  (dashboard-setup-startup-hook)
+  :init
+  (setq dashboard-startup-banner "~/.emacs.d/cbbbrother-theme/witcher.png"))
 
 (setq dashboard-items '((recents  . 5)
                         (bookmarks . 5)
@@ -109,6 +111,9 @@
 (use-package yaml-mode
   :ensure t)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+
+(use-package magit
+  :ensure t)
 
 (provide 'packages)
 ;;; packages.el ends here
